@@ -8,7 +8,6 @@ import 'package:flutterapp/services/database_service.dart';
 import 'package:flutterapp/services/keyboard_service.dart';
 import 'package:flutterapp/services/route_service.dart';
 import 'package:flutterapp/services/theme_service.dart';
-import 'package:flutterapp/theme.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
 

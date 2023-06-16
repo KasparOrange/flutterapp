@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "186123703816",
+    "project_id": "flutterwebtraining-367a3",
+    "storage_bucket": "flutterwebtraining-367a3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:186123703816:android:2de8236f10d49911bda3bd",
+        "android_client_info": {
+          "package_name": "com.example.flutterapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJRn5YiRAQWyUpa4GnwHa3zPw00b6DpXE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

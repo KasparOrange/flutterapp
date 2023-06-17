@@ -39,7 +39,6 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
   final _themeService = ThemeService();
   final _databaseService = DatabaseService();
 
-
   @override
   void initState() {
     _themeService.addListener(() => setState(() {}));
@@ -76,9 +75,6 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
           theme: themeService.lightTheme,
           darkTheme: themeService.darkTheme,
           themeMode: themeService.themeMode,
-          // theme: lrThemeData,
-          // darkTheme: lrThemeData.copyWith(brightness: Brightness.dark),
-          // themeMode: themeMode,
         );
       }),
     );

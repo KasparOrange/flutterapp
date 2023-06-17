@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutterapp/services/keyboard_service.dart';
 import 'package:flutterapp/services/log_service.dart';
 import 'package:markdown_editable_textinput/format_markdown.dart';
@@ -28,35 +29,50 @@ class _MarkdownEditorModuleState extends State<MarkdownEditorModule> {
     _controller.dispose();
   }
 
+  final String exampleMD = 
+''' 
+# H1
+*BOLD* \n
+_Italic_
+
+''';
+
   @override
   Widget build(BuildContext context) {
     final keyboardService = Provider.of<KeyboardService>(context);
     return Container(
-        height: 300,
+        height: 1000,
         margin: EdgeInsets.all(100),
         // padding: EdgeInsets.all(100),
         decoration: BoxDecoration(
             border: Border.all(width: 10, style: BorderStyle.solid),
             gradient: LinearGradient(colors: [Colors.blue, Colors.yellow])),
-        child: MarkdownTextInput(
-          (value) {
-            log(value);
-          },
-          'Initial Value',
-          label: 'Description',
-          maxLines: 10,
-          actions: MarkdownType.values,
-          controller: _controller,
-          textStyle: TextStyle(fontSize: 16),
-        )
+        child: 
 
-        // child: MarkdownFormField(
+        // NOTE: This displays Markdown fine, but one would have to input every linebreak by hand.
+        // Markdown(data: exampleMD,)
+
+        // NOTE: This just breaks outright. Validation errors. Not null-safty compatible?
+        // MarkdownTextInput(
+        //   (value) {
+        //     log(value);
+        //   },
+        //   'Initial Value',
+        //   label: 'Description',
+        //   maxLines: 10,
+        //   actions: MarkdownType.values,
         //   controller: _controller,
-        //   // focusNode: keyboardService.textInputFocusNode,
-        //   enableToolBar: true,
-        //   emojiConvert: true,
-        //   autoCloseAfterSelectEmoji: false,
-        // ),
+        //   textStyle: TextStyle(fontSize: 16),
+        // )
+
+        // NOTE: This does not throw any errors, but its buttons don't do anything jet. Focus? Containter size?
+        MarkdownFormField(
+          controller: _controller,
+          // focusNode: keyboardService.textInputFocusNode, // NOTE: This node tells the KeyboardService to not act on hotkeys when it has focus.
+          enableToolBar: true,
+          emojiConvert: true,
+          autoCloseAfterSelectEmoji: false,
+        ),
         );
   }
 }

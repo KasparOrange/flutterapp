@@ -52,6 +52,8 @@ dependencies:
   simple_markdown_editor: ^0.2.0
   flex_color_scheme: ^7.1.2
   markdown_editable_textinput: ^2.2.0
+  markdown_toolbar: ^0.5.0
+  flutter_markdown: ^0.6.9+1
 
 dev_dependencies:
   flutter_test:

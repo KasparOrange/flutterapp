@@ -5,6 +5,7 @@ class PostsShowcase extends StatelessWidget {
 
   final String title;
 
+  // NOTE: This is a placeholder for posts eventually retreied from a DB.
   @override
   Widget build(BuildContext context) {
     return Column(

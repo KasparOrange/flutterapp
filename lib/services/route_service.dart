@@ -11,7 +11,6 @@ class RouteSerivce {
   int currentRouteIndex = 0;
 
   ScrollController scrollController = ScrollController();
-  // scrollController.
 
   List<String> routePaths = [
     '/',
@@ -21,14 +20,11 @@ class RouteSerivce {
     '/auth',
   ];
 
-  Widget _getChild(int index) {
-    final path = routePaths[index];
+  Widget _getChild(String path) {
+    // final path = routePaths[index];
     switch (path) {
       case '/':
-        // return Container();
         return Image.asset('kreidekueste-ruegen.jpg', fit: BoxFit.fitWidth, alignment: Alignment.topCenter,);
-      // ContentView(
-      //     child: PostsShowcase(title: titleFormRoutePath(path)));
       case '/aktuelles':
         return ContentView(
             child: PostsShowcase(title: titleFormRoutePath(path)));
@@ -63,6 +59,7 @@ class RouteSerivce {
 
     currentRouteIndex = nextRouteIndex;
 
+    // TODO: Find a way to scroll back to top when trasitioning.
     // scrollController.animateTo(0,
     //     curve: Curves.bounceInOut, duration: Duration(milliseconds: 100));
 
@@ -99,7 +96,7 @@ class RouteSerivce {
                   return CustomTransitionPage(
                       key: state.pageKey,
                       transitionsBuilder: _trasitionBuilder,
-                      child: _getChild(entry.key));
+                      child: _getChild(entry.value));
                 }))
             .toList())
   ]);

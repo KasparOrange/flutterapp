@@ -51,11 +51,10 @@ class RouteSerivce {
     return '$firstLetterUpper$withoutFirstLetter';
   }
 
-  Widget _trasitionBuilder(context, antimation, secondaryAnimation, child) {
+  Widget _transitionBuilder(context, animation, secondaryAnimation, child) {
     final routerState = GoRouterState.of(context);
-    var beginOffsetX = 0;
     var nextRouteIndex = routePaths.indexOf(routerState.path!);
-    beginOffsetX = currentRouteIndex < nextRouteIndex ? 1 : -1;
+    double beginOffsetX = currentRouteIndex < nextRouteIndex ? 1.0 : -1.0;
 
     currentRouteIndex = nextRouteIndex;
 
@@ -66,8 +65,8 @@ class RouteSerivce {
     // scrollController.jumpTo(1);
 
     return SlideTransition(
-      position: antimation.drive(Tween<Offset>(
-        begin: Offset(beginOffsetX.toDouble(), 0),
+      position: animation.drive(Tween<Offset>(
+        begin: Offset(beginOffsetX, 0),
         end: Offset.zero,
       ).chain(CurveTween(curve: Curves.bounceInOut))),
       child: child,
@@ -95,7 +94,7 @@ class RouteSerivce {
                 pageBuilder: (context, state) {
                   return CustomTransitionPage(
                       key: state.pageKey,
-                      transitionsBuilder: _trasitionBuilder,
+                      transitionsBuilder: _transitionBuilder,
                       child: _getChild(entry.value));
                 }))
             .toList())

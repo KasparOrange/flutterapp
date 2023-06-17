@@ -94,6 +94,7 @@ class _SuperViewState extends State<SuperView> {
           ),
           body: Stack(children: [
             Container(
+              height: 1000,
               decoration: BoxDecoration(
                   image: const DecorationImage(
                       image: AssetImage('kreidekueste-ruegen.jpg'),
@@ -113,8 +114,12 @@ class _SuperViewState extends State<SuperView> {
                 addRepaintBoundaries: true,
                 children: [
                   Container(
-                    height: 1000,
-                    child: widget.child),
+                    height: 500,
+                  child:
+                  widget.child,
+                  // NOTE: Comes from: file:///C:/SELF/Code/flutter/flutterapp/lib/services/route_service.dart
+
+                    ),
                   Container(
                     color: Colors.amber,
                     height: 200,

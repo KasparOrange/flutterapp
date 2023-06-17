@@ -29,15 +29,15 @@ _This is how the codebase is structured._
 ## Logging
 I'v written a wrapper for the _log()_ function in _dart:developer_ which is just named _log(object)_. It will take any object and ToString it and then output this to the debug console together with the filename and code-line where the log originates (stacktrace). This is a functionality which I have not been able to find in existing libraries, in this simplicity. 
 
-*TODO:* Make the stacktrace a clickable link.
+**TODO:** Make the stacktrace a clickable link.
 
 ## File Structure
 Files are organized in four categories:
 1. Views
     - Page-like widgets that are either complete routes or container of routes. 
     - The app should never display more then one view if the same type at the same time. If thats the case, make it into a module.
-    - *SuperView* has the *Scaffold* with the *AppBar* and gets returned by the builder of the *ShellRoute*.
-    - *ContentView* wraps the view-widgets displaying the actual content. This gets returned by the _getChild()_ function of the *RouteService*, which is called by the builder of the *GoRoute*s, that get created with a _map()_ method on a list of routes to fill the routes parameter of the *ShellRoute*. 
+    - **SuperView** has the **Scaffold** with the **AppBar** and gets returned by the builder of the **ShellRoute**.
+    - **ContentView** wraps the view-widgets displaying the actual content. This gets returned by the _getChild()_ function of the **RouteService**, which is called by the builder of the **GoRoute**s, that get created with a _map()_ method on a list of routes to fill the routes parameter of the **ShellRoute**. 
 2. Modules
     - Smaller parts of the interface that a page might use more then one of. Examples are the widgets displaying a post or an markdown editor.
 3. Services
@@ -52,7 +52,7 @@ Files are organized in four categories:
 ## Naming
 _I generally try to stick to the official [style guide](https://dart.dev/effective-dart/style)._
 
-Additional I name (not jet everywhere implemented) every files and classes with the appropriate category as suffix. I.e. *route_service* for the file and *RouteService* for the class.
+Additional I name (not jet everywhere implemented) every files and classes with the appropriate category as suffix. I.e. **route_service** for the file and **RouteService** for the class.
 
 # Challenges
 _Following features are, or are expected to be, challenging._
@@ -84,9 +84,9 @@ I've heard that Cloud Firestore is more expensive when storing images, Realtime 
 
 Offline database might be a nice addition. I imagine this would reduce load-time after the initial load and so improve the responsiveness for users with low bandwidth, which might be frequent cause the members of the citizens' initiative are mostly old people living in rural areas in northern germany.
 
-*TODO:* Research and test, file uploading from the live app and possible libraries, that interface with the OS-filesystem.
+**TODO:** Research and test, file uploading from the live app and possible libraries, that interface with the OS-filesystem.
 
-*TODO:* Compare and test both Cloud Firestore and Realtime Database.
+**TODO:** Compare and test both Cloud Firestore and Realtime Database.
 
 # Notes
 I'm generally very happy to read constructive criticism. 

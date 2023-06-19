@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/services/auth_service.dart';
-import 'package:flutterapp/services/log_service.dart';
+import 'package:flutterapp/services/logging_service.dart';
 import 'package:flutterapp/modules/loading_module.dart';
 
 class SignIn extends StatefulWidget {
@@ -105,7 +105,7 @@ class _SignInState extends State<SignIn> {
                               onPressed: () async {
                                 log('Loading: $loading');
                                 setState(() => loading = true);
-                                await _authService.signInAnon();
+                                await _authService.signInAnonymously();
                               },
                               child: const Text("Sign In anon")),
                         ],

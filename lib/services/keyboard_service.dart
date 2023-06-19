@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutterapp/services/log_service.dart';
+import 'package:flutterapp/services/logging_service.dart';
 import 'package:flutterapp/services/route_service.dart';
 import 'package:flutterapp/services/theme_service.dart';
 import 'package:go_router/go_router.dart';

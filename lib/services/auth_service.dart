@@ -1,15 +1,19 @@
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:flutterapp/services/database_service.dart';
-import 'package:flutterapp/services/log_service.dart';
+import 'package:flutterapp/services/logging_service.dart';
 import 'package:validation_pro/validate.dart';
 
 class AuthService {
+  // NOTE: Initially a sign-in view should be shown.
+  AuthViewToShow authViewToShow = AuthViewToShow.ShowSignIn;
+
   Stream<User?> get user {
     return FirebaseAuth.instance.authStateChanges();
   }
 
-  Future signInAnon() async {
+  Future signInAnonymously() async {
     try {
       final userCredential = await FirebaseAuth.instance.signInAnonymously();
       return userCredential.user;
@@ -41,7 +45,7 @@ class AuthService {
       final userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
 
-      // create a new document for the user with the uid
+      // NOTE: Create a new document for the user with the uid.
       await DatabaseService.createUserInDatabase(user: userCredential.user!);
 
       return userCredential.user;
@@ -101,12 +105,29 @@ class AuthService {
       {required UserRightsLevel needs, required UserRightsLevel has}) {
     return needs.index < has.index;
   }
+  
 }
 
 enum UserRightsLevel {
-  random,
-  guest,
-  member,
-  moderator,
-  admin,
+  Random,
+  Guest,
+  Member,
+  Moderator,
+  Admin,
+}
+
+enum AuthViewToShow { ShowRegister, ShowSignIn, ShowSignOut }
+
+enum Move {
+  up,
+  down,
+  left,
+  right;
+
+  Offset get offset => switch (this) {
+        up => const Offset(0.0, 1.0),
+        down => const Offset(0.0, -1.0),
+        left => const Offset(-1.0, 0.0),
+        right => const Offset(1.0, 0.0),
+      };
 }

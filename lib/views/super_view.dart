@@ -2,11 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/services/database_service.dart';
 import 'package:flutterapp/services/keyboard_service.dart';
-import 'package:flutterapp/services/log_service.dart';
+import 'package:flutterapp/services/logging_service.dart';
 import 'package:flutterapp/services/route_service.dart';
 import 'package:flutterapp/services/theme_service.dart';
 import 'package:flutterapp/trash/app_bar_user_area.dart';
-import 'package:flutterapp/views/home/content_view.dart';
+import 'package:flutterapp/views/content_view.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 

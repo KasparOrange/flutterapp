@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/services/auth_service.dart';
-import 'package:flutterapp/services/log_service.dart';
+import 'package:flutterapp/services/logging_service.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key, required this.toggleView});

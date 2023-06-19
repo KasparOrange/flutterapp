@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapp/views/home/auth_view.dart';
-import 'package:flutterapp/views/home/contact_view.dart';
-import 'package:flutterapp/views/home/content_view.dart';
-import 'package:flutterapp/views/home/super_view.dart';
+import 'package:flutterapp/views/auth_view.dart';
+import 'package:flutterapp/views/contact_view.dart';
+import 'package:flutterapp/views/content_view.dart';
+import 'package:flutterapp/views/super_view.dart';
 import 'package:flutterapp/modules/markdown_editor_module.dart';
 import 'package:flutterapp/modules/posts_showcase_module.dart';
 import 'package:go_router/go_router.dart';

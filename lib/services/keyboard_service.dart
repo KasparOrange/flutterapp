@@ -7,11 +7,14 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class KeyboardService {
-  final _routeService = RouteSerivce();
+  final _routeService = RouteService();
 
   final textInputFocusNode = FocusNode(debugLabel: 'Text Input');
 
-  bool keyHandler({required KeyEvent event, required BuildContext context, required ThemeService themeService}) {
+  bool keyHandler(
+      {required KeyEvent event,
+      required BuildContext context,
+      required ThemeService themeService}) {
     if (textInputFocusNode.hasFocus || event is! KeyDownEvent) return false;
     bool returnValue = false;
     if (_handelKeyboardRouting(context: context, event: event)) {
@@ -30,7 +33,6 @@ class KeyboardService {
     if (!HardwareKeyboard.instance.physicalKeysPressed
         .contains(PhysicalKeyboardKey.shiftLeft)) return false;
 
-      
     final currentRouteIndex =
         _routeService.routePaths.indexOf(GoRouter.of(context).location);
 
@@ -52,7 +54,6 @@ class KeyboardService {
     return false;
   }
 
-  
   bool _handleThemeToggle(
       {required KeyEvent event, required ThemeService themeService}) {
     if (!HardwareKeyboard.instance.physicalKeysPressed

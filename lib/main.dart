@@ -34,10 +34,11 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
         themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light);
   }
 
-  final _routeService = RouteSerivce();
+  final _routeService = RouteService();
   final _keyboardService = KeyboardService();
   final _themeService = ThemeService();
   final _databaseService = DatabaseService();
+  final _authService = AuthService();
 
   @override
   void initState() {
@@ -64,6 +65,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
         Provider.value(value: _routeService),
         Provider.value(value: _keyboardService),
         Provider.value(value: _databaseService),
+        Provider.value(value: _authService),
         ListenableProvider.value(value: _themeService),
       ],
       child: Builder(builder: (context) {

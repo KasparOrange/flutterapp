@@ -28,7 +28,7 @@ class _SuperViewState extends State<SuperView> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User?>(context);
-    final routeService = Provider.of<RouteSerivce>(context);
+    final routeService = Provider.of<RouteService>(context);
     final keyboardService = Provider.of<KeyboardService>(context);
     final themeService = Provider.of<ThemeService>(context);
     final databaseService = Provider.of<DatabaseService>(context);
@@ -115,11 +115,9 @@ class _SuperViewState extends State<SuperView> {
                 children: [
                   Container(
                     height: 500,
-                  child:
-                  widget.child,
-                  // NOTE: Comes from: file:///C:/SELF/Code/flutter/flutterapp/lib/services/route_service.dart
-
-                    ),
+                    child: widget.child,
+                    // NOTE: Comes from: file:///C:/SELF/Code/flutter/flutterapp/lib/services/route_service.dart
+                  ),
                   Container(
                     color: Colors.amber,
                     height: 200,

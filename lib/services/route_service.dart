@@ -7,7 +7,7 @@ import 'package:flutterapp/modules/markdown_editor_module.dart';
 import 'package:flutterapp/modules/posts_showcase_module.dart';
 import 'package:go_router/go_router.dart';
 
-class RouteSerivce {
+class RouteService {
   int currentRouteIndex = 0;
 
   ScrollController scrollController = ScrollController();
@@ -24,7 +24,11 @@ class RouteSerivce {
     // final path = routePaths[index];
     switch (path) {
       case '/':
-        return Image.asset('kreidekueste-ruegen.jpg', fit: BoxFit.fitWidth, alignment: Alignment.topCenter,);
+        return Image.asset(
+          'kreidekueste-ruegen.jpg',
+          fit: BoxFit.fitWidth,
+          alignment: Alignment.topCenter,
+        );
       case '/aktuelles':
         return ContentView(
             child: PostsShowcase(title: titleFormRoutePath(path)));

@@ -12,6 +12,11 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
+  // NOTE: This is supposed to help with understanding errors.
+  FlutterError.onError = (details) {
+    FlutterError.presentError(details);
+  };
+
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp(
@@ -30,8 +35,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
   var themeMode = ThemeMode.light;
   void toggleTheme() {
-    setState(() => themeMode =
-        themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light);
+    setState(() => themeMode = themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light);
   }
 
   final _routeService = RouteService();
@@ -60,8 +64,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
           value: AuthService().user,
           initialData: null,
         ),
-        StreamProvider<QuerySnapshot?>.value(
-            value: DatabaseService().posts, initialData: null),
+        // StreamProvider<QuerySnapshot?>.value(value: DatabaseService().posts, initialData: null),
         Provider.value(value: _routeService),
         Provider.value(value: _keyboardService),
         Provider.value(value: _databaseService),

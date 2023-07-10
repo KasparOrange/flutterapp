@@ -55,6 +55,13 @@ dependencies:
   markdown_editable_textinput: ^2.2.0
   markdown_toolbar: ^0.5.0
   flutter_markdown: ^0.6.9+1
+  file_picker: ^5.3.2
+  kumi_popup_window: ^2.0.1
+  image_picker_web: ^3.0.0+1
+  firebase_storage: ^11.2.4
+  image_picker_for_web: ^2.2.0
+  cross_file: ^0.3.3+4
+  mime_type: ^1.0.0
 
 dev_dependencies:
   flutter_test:

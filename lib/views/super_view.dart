@@ -73,10 +73,10 @@ class _SuperViewState extends State<SuperView> {
                   );
                 }).toList()),
             actions: [
-              MaterialButton(
-                onPressed: databaseService.test,
-                child: const Text('TEST'),
-              ),
+              // MaterialButton(
+              //   onPressed: databaseService.test,
+              //   child: const Text('TEST'),
+              // ),
               const Tooltip(
                   message: 'SHIFT + J = Left\nSHIFT + K = Right',
                   child: Icon(Icons.keyboard)),

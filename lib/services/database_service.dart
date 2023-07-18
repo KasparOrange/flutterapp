@@ -10,10 +10,12 @@ class DatabaseService {
   static FirebaseFirestore get ff => FirebaseFirestore.instance;
   static FirebaseStorage get fs => FirebaseStorage.instance;
 
-  static Future uploadImageToFBStorage(String name, Uint8List bytes) async {
+  /// Returns donwload url
+  static Future<String> uploadImageToFBStorage(String name, Uint8List bytes) async {
     final imagesRef = fs.ref().child('images');
     final fileRef = imagesRef.child(name);
-    return await fileRef.putData(bytes);
+    await fileRef.putData(bytes);
+    return await fileRef.getDownloadURL();
   }
 
   // #region Firestore

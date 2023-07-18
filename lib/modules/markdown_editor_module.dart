@@ -7,6 +7,7 @@ import 'dart:js_interop';
 import 'dart:math';
 import 'dart:typed_data';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mime_type/mime_type.dart';
 import 'package:path/path.dart' as path;
 import 'package:cross_file/cross_file.dart';
@@ -24,8 +25,10 @@ import 'package:flutterapp/services/logging_service.dart';
 import 'package:flutterapp/services/theme_service.dart';
 import 'package:markdown_editable_textinput/format_markdown.dart';
 import 'package:markdown_editable_textinput/markdown_text_input.dart';
+import 'package:pencil_field/pencil_field.dart';
 import 'package:provider/provider.dart';
 import 'package:simple_markdown_editor/simple_markdown_editor.dart';
+import 'package:whiteboard/whiteboard.dart';
 
 class MarkdownEditorModule extends StatefulWidget {
   const MarkdownEditorModule({super.key});
@@ -37,6 +40,8 @@ class MarkdownEditorModule extends StatefulWidget {
 class _MarkdownEditorModuleState extends State<MarkdownEditorModule> with TickerProviderStateMixin {
   late final TextEditingController _textEditingController;
   late final TabController _tabController;
+  final PencilFieldController _pencilFieldController = PencilFieldController();
+  late final WhiteBoardController _whiteBoardController;
   String text = '';
 
   ImageModel? image;
@@ -57,6 +62,7 @@ class _MarkdownEditorModuleState extends State<MarkdownEditorModule> with Ticker
         }
       });
     _textEditingController = TextEditingController();
+    _whiteBoardController = WhiteBoardController();
   }
 
   @override
@@ -231,6 +237,33 @@ _Italic_
                             },
                             child: Text('DOWNLOAD'),
                           )),
+                    ),
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Flexible(
+                              fit: FlexFit.tight,
+                              flex: 4,
+                              child: WhiteBoard(
+                                onConvertImage: (value) {
+                                  log('Converting and Uploading');
+                                  final timestamp = DateTime.now().millisecond;
+                                  DatabaseService.uploadImageToFBStorage(
+                                      'Signature $timestamp', value);
+                                },
+                              )),
+                          Flexible(
+                              fit: FlexFit.tight,
+                              flex: 1,
+                              child: TextButton(
+                                onPressed: () {
+                                  log('This is happening');
+                                  _whiteBoardController.convertToImage();
+                                },
+                                child: Text("Sign"),
+                              ))
+                        ],
+                      ),
                     ),
                     Flexible(
                       fit: FlexFit.tight,
